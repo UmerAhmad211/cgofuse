@@ -190,7 +190,7 @@ static void *cgofuse_init_fuse(void)
 #elif defined(__NetBSD__)
 	h = dlopen("librefuse.so.2", RTLD_NOW);
 #elif defined(__OpenBSD__)
-	h = dlopen("libfuse.so.2.0", RTLD_NOW);
+	h = dlopen("libfuse.so", RTLD_NOW);
 #elif defined(__linux__)
 #if FUSE_USE_VERSION < 30
 	h = dlopen("libfuse.so.2", RTLD_NOW);
