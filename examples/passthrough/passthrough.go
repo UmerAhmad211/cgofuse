@@ -1,3 +1,4 @@
+//go:build darwin || freebsd || netbsd || openbsd || linux
 // +build darwin freebsd netbsd openbsd linux
 
 /*
@@ -67,7 +68,8 @@ func (self *Ptfs) Mknod(path string, mode uint32, dev uint64) (errc int) {
 	defer trace(path, mode, dev)(&errc)
 	defer setuidgid()()
 	path = filepath.Join(self.root, path)
-	return errno(syscall.Mknod(path, mode, int(dev)))
+	errc = errno(syscall_Mknod(path, mode, dev))
+	return
 }
 
 func (self *Ptfs) Mkdir(path string, mode uint32) (errc int) {
